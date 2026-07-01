@@ -1,6 +1,6 @@
 from vehicle_location_fetch import get_vehicle_location
 from route import route_stops
-from find_distance import is_within_distance
+from find_distance import is_within_distance, calculate_distance
 from datetime import datetime
 import logging
 import time
@@ -21,6 +21,17 @@ def track_bus_near_locations():
     # print(location_now)
 
     if location_now.get('result') == 'success':
+        distance = False
+        nl = ""
+        ig = "-" if location_now.get('ignition') == "1" else "o"
+
+        my_stop_distance = calculate_distance(
+                [float(location_now['latitude']), float(location_now['longitude'])],
+                [12.859018182395992, 77.57057183404201],
+                'km'
+            )
+        print(f"At {my_stop_distance} from your stop")
+
         # Check if it is near any route stops
         for stop in route_stops:
             # Calculate the distance between the current location and the stop
@@ -35,6 +46,11 @@ def track_bus_near_locations():
                 print(f"{datetime.now().strftime("%d-%m-%Y %H:%M:%S")} ==> {stop['alertMsgTemplate']}")
             else:
                 pass
+
+        # if distance != True:
+        #     print(f"{ig}", end=" ", flush=True)
+        #     nl = "\n"
+
     else:
         print("Failed to fetch vehicle location")
         
@@ -43,4 +59,4 @@ def track_bus_near_locations():
 
 while True:
     track_bus_near_locations()
-    time.sleep(10)
+    time.sleep(20)

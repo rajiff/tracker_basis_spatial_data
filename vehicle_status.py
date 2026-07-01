@@ -25,7 +25,8 @@ def track_vehicle_raw():
         # print(f"GPS: {data['data'][0]['gps_status']}")
 
         # Print the data in one line
-        print(f"As of {datetime.now().strftime("%d-%m-%Y %H:%M:%S")} Vehicle status at {data['data'][0]['datetime']} ({data['status']} | {data['data'][0]['gps_status']}) Loc: {data['data'][0]['latitude']} {data['data'][0]['longitude']} speed {data['data'][0]['speed']} {data['data'][0]['ignition_status']} {data['data'][0]['location']})")
+        # print(f"As of {datetime.now().strftime("%d-%m-%Y %H:%M:%S")} Vehicle status at {data['data'][0]['datetime']} ({data['status']} | {data['data'][0]['gps_status']}) Loc: {data['data'][0]['latitude']} {data['data'][0]['longitude']} speed {data['data'][0]['speed']} {data['data'][0]['ignition_status']} {data['data'][0]['location']})")
+        print(f"As of {datetime.now().strftime("%d-%m-%Y %H:%M:%S")} Vehicle status at {data['data'][0]['datetime']} ({data['status']} | {data['data'][0]['gps_status']}) Loc: {data['data'][0]['latitude']} {data['data'][0]['longitude']} speed {data['data'][0]['speed']} {data['data'][0]['ignition_status']})")
 
         # idle_since
     else:   

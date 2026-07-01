@@ -30,9 +30,10 @@ def get_vehicle_location():
             "latitude": data.get("data")[0].get("latitude"),
             "longitude": data.get("data")[0].get("longitude"),
             "speed": data.get("data")[0].get("speed"),
-            "trackedAt": datetime.now().strftime("%d-%m-%Y %H:%M:%S"),
-            "statusAt": data.get("data")[0].get("datetime"),
-            "ignition": data.get("data")[0].get("ignition_status")
+            "tracked_at": datetime.now().strftime("%d-%m-%Y %H:%M:%S"),
+            "status_at": data.get("data")[0].get("datetime"),
+            "ignition": data.get("data")[0].get("ignition_status"),
+            "idle_aince": data.get("data")[0].get("idle_since")
         }
 
     else:
